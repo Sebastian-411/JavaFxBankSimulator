@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labjavafx.model.HelloController">
+   <children>
+      <Label fx:id="balance" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="154.0" prefHeight="34.0" prefWidth="69.0" text="Label" />
+      <VBox alignment="CENTER" layoutX="41.0" layoutY="218.0" prefHeight="337.0" prefWidth="239.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#registerMovement" text="Registrar gastos/ingreso">
+               <font>
+                  <Font name="Dubai Light" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="expenses" mnemonicParsing="false" onAction="#showExpenses" text="Ver gastos">
+               <font>
+                  <Font name="Dubai Light" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="income" mnemonicParsing="false" onAction="#showIncome" text="Ver ingresos">
+               <font>
+                  <Font name="Dubai Light" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="326.0" layoutY="38.0" prefHeight="20.0" prefWidth="220.0" text="Bienvenido a Alfa ">
+         <font>
+            <Font name="Broadway" size="17.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="351.0" layoutY="58.0" text="¿Que desea hacer?">
+         <font>
+            <Font name="Broadway" size="17.0" />
+         </font>
+      </Label>
+      <TableView fx:id="movementsTable" layoutX="301.0" layoutY="119.0" prefHeight="411.0" prefWidth="529.0">
+        <columns>
+          <TableColumn fx:id="movement" prefWidth="123.0" text="Tipo de movimiento" />
+          <TableColumn fx:id="value" prefWidth="94.0" text="Valor" />
+            <TableColumn fx:id="date" prefWidth="119.0" text="Fecha" />
+            <TableColumn fx:id="description" prefWidth="192.0" text="Descripcion" />
+        </columns>
+      </TableView>
+      <Label layoutX="110.0" layoutY="119.0" text="BALANCE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <MenuBar layoutX="-6.0" layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" onAction="#exit" text="Exit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
