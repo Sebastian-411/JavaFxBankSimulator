@@ -53,6 +53,19 @@ public class HelloController implements Initializable {
         movement.setCellValueFactory(new PropertyValueFactory<>("type"));
         value.setCellValueFactory(new PropertyValueFactory<>("amount"));
         movementsTable.setItems(MovementList.getInstance().getMovements());
+        movementsTable.setRowFactory(tv -> new javafx.scene.control.TableRow<Movement>() {
+            @Override
+            protected void updateItem(Movement item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null) {
+                    setStyle("");
+                } else if (item.getType() == MovementType.INCOME) {
+                    setStyle("-fx-background-color: #9AAB64FF;");
+                } else {
+                    setStyle("-fx-background-color: #F3B98CFF;");
+                }
+            }
+        });
         income.setBackground(Background.fill(Color.rgb(154, 171, 100)));
         expenses.setBackground(Background.fill(Color.rgb(154, 171, 100)));
         balance.setText(String.valueOf(MovementList.getInstance().getBalanced()));

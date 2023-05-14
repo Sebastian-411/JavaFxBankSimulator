@@ -52,9 +52,8 @@ public class MovementController implements Initializable {
                 alert.setContentText("Por favor ingrese todos los campos");
                 alert.showAndWait();
             } else {
-                Date dates = new Date();
                 ZonedDateTime zonedDateTime = date.getValue().atStartOfDay(ZoneId.systemDefault());
-                Date date = Date.from(zonedDateTime.toInstant());
+                Date dates = Date.from(zonedDateTime.toInstant());
                 Movement movement = new Movement(description.getText(), Double.parseDouble(value.getText()), MovementType.valueOf(typeMovements.getValue()), dates);
                 boolean status = MovementList.getInstance().addMovement(movement);
                 if(!status){

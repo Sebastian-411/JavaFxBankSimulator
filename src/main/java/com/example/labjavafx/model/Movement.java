@@ -13,7 +13,7 @@ public class Movement {
         this.description = description;
         this.amount = amount;
         this.type = type;
-        this.date = new Date();
+        this.date = date;
     }
 
     public String getDescription() {
