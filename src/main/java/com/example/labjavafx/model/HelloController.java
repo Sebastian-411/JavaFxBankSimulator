@@ -2,6 +2,8 @@ package com.example.labjavafx.model;
 
 import com.example.labjavafx.HelloApplication;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,7 +54,9 @@ public class HelloController implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         movement.setCellValueFactory(new PropertyValueFactory<>("type"));
         value.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        movementsTable.setItems(MovementList.getInstance().getMovements());
+        ObservableList<Movement> movements = MovementList.getInstance().getMovements();
+        movements.sort((o1, o2) -> o2.getDate().compareTo(o1.getDate()));
+        movementsTable.setItems(movements);
         movementsTable.setRowFactory(tv -> new javafx.scene.control.TableRow<Movement>() {
             @Override
             protected void updateItem(Movement item, boolean empty) {
@@ -69,7 +73,6 @@ public class HelloController implements Initializable {
         income.setBackground(Background.fill(Color.rgb(154, 171, 100)));
         expenses.setBackground(Background.fill(Color.rgb(154, 171, 100)));
         balance.setText(String.valueOf(MovementList.getInstance().getBalanced()));
-
     }
 
     @FXML
