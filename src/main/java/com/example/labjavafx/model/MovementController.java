@@ -28,16 +28,19 @@ public class MovementController implements Initializable {
     private TextField description;
 
     @FXML
-    private ChoiceBox<MovementType> typeMovements;
+    private ChoiceBox<String> typeMovements;
 
     @FXML
     private TextField value;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<MovementType> olist = FXCollections.observableArrayList();
-        olist.addAll(Arrays.asList(MovementType.values()));
+        ObservableList<String> olist = FXCollections.observableArrayList();
+        for (MovementType type : MovementType.values()) {
+            olist.add(type.toString());
+        }
         typeMovements.setItems(olist);
+        typeMovements.setValue("Seleccione un tipo de movimiento");
     }
 
     @FXML
@@ -52,7 +55,7 @@ public class MovementController implements Initializable {
                 Date dates = new Date();
                 ZonedDateTime zonedDateTime = date.getValue().atStartOfDay(ZoneId.systemDefault());
                 Date date = Date.from(zonedDateTime.toInstant());
-                Movement movement = new Movement(description.getText(), Double.parseDouble(value.getText()), typeMovements.getValue(), dates);
+                Movement movement = new Movement(description.getText(), Double.parseDouble(value.getText()), MovementType.valueOf(typeMovements.getValue()), dates);
                 boolean status = MovementList.getInstance().addMovement(movement);
                 if(!status){
                     throw new Exception();

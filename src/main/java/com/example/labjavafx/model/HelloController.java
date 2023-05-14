@@ -25,7 +25,7 @@ public class HelloController implements Initializable {
     @FXML
     private Label balance;
     @FXML
-    private TableColumn<Date, Date> date;
+    private TableColumn<Movement, Date> date;
 
     @FXML
     private TableView<Movement> movementsTable;
